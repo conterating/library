@@ -1,0 +1,26 @@
+Task/Problem: Create a library where users can add and remove books, and supply information about the books
+
+Does this program have a user interface? What functionality does the interface have?
+
+-Yes, a grid filled with cards with information about the books will be visible to the users. 
+-On the inteface, users can add books, remove books, and change information aboutb the books.
+
+What inputs does the program have? 
+
+-Users can input information such as the author of the book, title, numbers of pages, and if they have read the book
+
+What's the desired output?
+
+-Everytime a user adds a book, a new card, with the book's info, should appear on the screen and follow the grid layout
+
+
+Pseudocode:
+
+When the user submits information about the book
+Add the book to an array
+Iterate over this array and display the book as a card on the screen
+
+If the user decides to change the information of a book, update information once submitted
+
+If the user deletes a book
+Remove the book from the layout
