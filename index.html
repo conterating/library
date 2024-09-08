@@ -23,6 +23,39 @@
   <body>
     <header>
       <h1 class="page-header">My Library</h1>
+      <dialog id="addNewBookForm">
+        <form id="newBookForm">
+          <p>Enter information about Book</p>
+          <p>
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title" />
+          </p>
+          <p>
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" />
+          </p>
+          <p>
+            <label for="pages">Pages</label>
+            <input type="text" name="pages" id="pages" />
+          </p>
+          <p>
+            <label for="readTracker">Read Status: </label>
+            <select name="readTracker" id="readTracker">
+              <option value="default">Choose...</option>
+              <option value="read">Read</option>
+              <option value="notRead">Not Read</option>
+            </select>
+          </p>
+          <div>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="confirmBtn" value="default" class="openForm">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <p><button id="showDialog">New Book</button></p>
+      <output></output>
     </header>
     <div class="library-container"></div>
   </body>
