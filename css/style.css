@@ -12,7 +12,13 @@ body {
 }
 
 .display-card {
+  background-color: #f3f5f7;
   width: 200px;
   height: 200px;
   border-radius: 14px;
+  font-size: 1.1rem;
+}
+
+.card-title {
+  font-size: 2.2rem;
 }

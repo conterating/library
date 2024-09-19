@@ -10,9 +10,29 @@ function Book(title, author, pages, readStatus) {
 Book.prototype.display = function () {
   const bookContainer = document.querySelector(".book-container");
   const card = document.createElement("div");
-  card.innerText = `Title: ${this.title}\nAuthor: ${this.author}\nPages: ${this.pages}\nRead Status: ${this.readStatus}`;
+
+  //title componenet
+  const title = document.createElement("h2");
+  title.textContent = `${this.title}`;
+  title.classList.add("card-title");
+
+  //author component
+  const author = document.createElement("p");
+  author.textContent = `Author: ${this.author}`;
+
+  //pages component
+  const pages = document.createElement("p");
+  pages.textContent = `Pages: ${this.pages}`;
+
+  //readStatus component
+  const readStatus = document.createElement("p");
+  readStatus.textContent = `Read Status: ${this.readStatus}`;
+
+  //append created elements to card
+  card.append(title, author, pages, readStatus);
 
   card.classList.add("display-card");
+  //append card to bookContainer
   bookContainer.append(card);
 };
 
