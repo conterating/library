@@ -7,14 +7,16 @@ body {
 
 .book-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   margin: 0 10%;
+  gap: 4px;
 }
 
 .display-card {
   background-color: #f3f5f7;
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
+  padding: 16px;
   border-radius: 14px;
   font-size: 1.1rem;
 }

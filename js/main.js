@@ -58,6 +58,19 @@ function addDefaultBooks() {
   );
   const hobbit = new Book("The Hobbit", "J. R. R. Tolkein", 310, "not read");
   const dune = new Book("Dune", "Frank Herbert", 412, "not read");
+
+  myLibrary.push(
+    harryPotter,
+    lordofTheRings,
+    greatGatsby,
+    keeperOfTheLostCities,
+    hobbit,
+    dune
+  );
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    myLibrary[i].display();
+  }
 }
 
 function addBookToLibrary() {
@@ -81,4 +94,5 @@ function addBookToLibrary() {
   }
 }
 
+addDefaultBooks();
 addBookToLibrary();
