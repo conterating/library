@@ -7,6 +7,15 @@ function Book(title, author, pages, readStatus) {
   this.readStatus = readStatus;
 }
 
+Book.prototype.display = function () {
+  const bookContainer = document.querySelector(".book-container");
+  const card = document.createElement("div");
+  card.innerText = `Title: ${this.title}\nAuthor: ${this.author}\nPages: ${this.pages}\nRead Status: ${this.readStatus}`;
+
+  card.classList.add("display-card");
+  bookContainer.append(card);
+};
+
 function addDefaultBooks() {
   const harryPotter = new Book("Harry Potter", "J. K. Rowling", 223, "read");
   const lordofTheRings = new Book(
@@ -43,6 +52,8 @@ function addBookToLibrary() {
         prompt("Read Status: ")
       );
       myLibrary.push(userBook);
+      userBook.display();
+
       continue;
     } else if (addBook == "no") {
       wantsToAddBook = false;
