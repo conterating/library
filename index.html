@@ -21,6 +21,33 @@
     <header class="header">
       <h1>My Library</h1>
       <button class="add-book-button">Add Book</button>
+      <!--Dialog Form-->
+      <dialog>
+        <form>
+          <p>Enter Book Information</p>
+          <p>
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title" />
+          </p>
+          <p>
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" />
+          </p>
+          <p>
+            <label for="pages">Pages</label>
+            <input type="number" name="pages" id="pages" />
+          </p>
+          <p>
+            <label for="readStatus">Read Status: </label>
+            <select name="readStatus" id="readStatus">
+              <option value="default">Choose an option</option>
+              <option value="read">Read</option>
+              <option value="not read">Not Read</option>
+            </select>
+          </p>
+        </form>
+        <button class="close-dialog">Submit</button>
+      </dialog>
     </header>
     <div class="book-container"></div>
   </body>

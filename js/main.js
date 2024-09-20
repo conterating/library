@@ -1,4 +1,7 @@
 const myLibrary = [];
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector(".add-book-button");
+const closeButton = document.querySelector(".close-dialog");
 
 function Book(title, author, pages, readStatus) {
   this.title = title;
@@ -73,6 +76,40 @@ function addDefaultBooks() {
   }
 }
 
+function openDialog() {
+  dialog.showModal();
+}
+
+function closeDialog(event) {
+  const form = document.querySelector("form");
+  const formTitle = document.querySelector("form #title");
+  const formAuthor = document.querySelector("form #author");
+  const formPages = document.querySelector("form #pages");
+  const formReadStatus = document.querySelector("form #readStatus");
+
+  if (
+    formTitle.value !== "" &&
+    formAuthor.value !== "" &&
+    formPages.value !== "" &&
+    formReadStatus.value !== ""
+  ) {
+    console.log("no empty values");
+  } else {
+    console.log("there are empty values");
+  }
+  formTitle.value =
+    formAuthor.value =
+    formPages.value =
+    formReadStatus.value =
+      "";
+  dialog.close();
+}
+
+showButton.addEventListener("click", openDialog);
+
+closeButton.addEventListener("click", closeDialog);
+
+/*
 function addBookToLibrary() {
   let wantsToAddBook = true;
   while (wantsToAddBook == true) {
@@ -93,6 +130,7 @@ function addBookToLibrary() {
     }
   }
 }
+*/
 
 addDefaultBooks();
-addBookToLibrary();
+//addBookToLibrary();
