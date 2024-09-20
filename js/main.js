@@ -93,7 +93,14 @@ function closeDialog(event) {
     formPages.value !== "" &&
     formReadStatus.value !== ""
   ) {
-    console.log("no empty values");
+    let formBook = new Book(
+      formTitle.value,
+      formAuthor.value,
+      formPages.value,
+      formReadStatus.value
+    );
+    myLibrary.push(formBook);
+    formBook.display();
   } else {
     console.log("there are empty values");
   }
