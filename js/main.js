@@ -28,8 +28,9 @@ Book.prototype.display = function () {
   pages.textContent = `Pages: ${this.pages}`;
 
   //readStatus component
-  const readStatus = document.createElement("p");
-  readStatus.textContent = `Read Status: ${this.readStatus}`;
+  let currentReadStatus = document.createElement("p");
+  currentReadStatus.textContent = `Read Status: ${this.readStatus}`;
+  currentReadStatus.classList.add("read-info");
 
   //button parent component
   const buttonParent = document.createElement("div");
@@ -54,15 +55,11 @@ Book.prototype.display = function () {
   card.setAttribute("data-id", `${this.title}`);
 
   //append created elements to card
-  card.append(title, author, pages, readStatus, buttonParent);
+  card.append(title, author, pages, currentReadStatus, buttonParent);
 
   card.classList.add("display-card");
   //append card to bookContainer
   bookContainer.append(card);
-};
-
-Book.prototype.changeStatus = function () {
-  console.log(this.readStatus);
 };
 
 function addDefaultBooks() {
@@ -163,12 +160,27 @@ removeButton.forEach((element) => {
 let changeReadStatus = document.querySelectorAll(".change-read");
 changeReadStatus.forEach((element) => {
   element.addEventListener("click", function (e) {
+    // Find the corresponding book card
+    const card = element.parentElement.parentElement;
+
+    // Get the title from the card's data attribute to identify the correct book
+    const bookTitle = card.getAttribute("data-id");
+
+    // Loop through the library to find the matching book
     for (let i = 0; i < myLibrary.length; i++) {
-      if (
-        myLibrary[i].title ===
-        element.parentElement.parentElement.getAttribute("data-id")
-      ) {
-        myLibrary[i].changeStatus();
+      if (myLibrary[i].title === bookTitle) {
+        // Get the <p> element that displays the read status
+        let currentReadStatus = card.querySelector(".read-info");
+
+        // Toggle the read status in the book object
+        if (myLibrary[i].readStatus === "read") {
+          myLibrary[i].readStatus = "not read";
+        } else {
+          myLibrary[i].readStatus = "read";
+        }
+
+        // Update the displayed read status
+        currentReadStatus.textContent = `Read Status: ${myLibrary[i].readStatus}`;
       }
     }
   });
