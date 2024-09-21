@@ -36,7 +36,7 @@ Book.prototype.display = function () {
 
   //remove button component
   let removeButton = document.createElement("button");
-  removeButton.textContent = "Remove Button";
+  removeButton.textContent = "Remove";
   removeButton.className = "remove-card";
 
   //change read status component
@@ -59,6 +59,10 @@ Book.prototype.display = function () {
   card.classList.add("display-card");
   //append card to bookContainer
   bookContainer.append(card);
+};
+
+Book.prototype.changeStatus = function () {
+  console.log(this.readStatus);
 };
 
 function addDefaultBooks() {
@@ -153,5 +157,19 @@ removeButton.forEach((element) => {
   element.addEventListener("click", function (e) {
     const firstParent = element.parentElement;
     firstParent.parentElement.style.display = "none";
+  });
+});
+
+let changeReadStatus = document.querySelectorAll(".change-read");
+changeReadStatus.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    for (let i = 0; i < myLibrary.length; i++) {
+      if (
+        myLibrary[i].title ===
+        element.parentElement.parentElement.getAttribute("data-id")
+      ) {
+        myLibrary[i].changeStatus();
+      }
+    }
   });
 });
