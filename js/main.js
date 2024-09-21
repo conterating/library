@@ -31,8 +31,16 @@ Book.prototype.display = function () {
   const readStatus = document.createElement("p");
   readStatus.textContent = `Read Status: ${this.readStatus}`;
 
+  //remove button component
+  let removeButton = document.createElement("button");
+  removeButton.textContent = "Remove Button";
+  removeButton.className = "remove-card";
+
+  //set unique data attribute
+  card.setAttribute("data-id", `${this.title}`);
+
   //append created elements to card
-  card.append(title, author, pages, readStatus);
+  card.append(title, author, pages, readStatus, removeButton);
 
   card.classList.add("display-card");
   //append card to bookContainer
@@ -76,12 +84,13 @@ function addDefaultBooks() {
   }
 }
 
+addDefaultBooks();
+
 function openDialog() {
   dialog.showModal();
 }
 
 function closeDialog(event) {
-  const form = document.querySelector("form");
   const formTitle = document.querySelector("form #title");
   const formAuthor = document.querySelector("form #author");
   const formPages = document.querySelector("form #pages");
@@ -109,6 +118,14 @@ function closeDialog(event) {
     formPages.value =
     formReadStatus.value =
       "";
+
+  let removeButton = document.querySelectorAll(".remove-card");
+  removeButton.forEach((element) => {
+    element.addEventListener("click", function (e) {
+      element.parentElement.style.display = "none";
+    });
+  });
+
   dialog.close();
 }
 
@@ -116,28 +133,9 @@ showButton.addEventListener("click", openDialog);
 
 closeButton.addEventListener("click", closeDialog);
 
-/*
-function addBookToLibrary() {
-  let wantsToAddBook = true;
-  while (wantsToAddBook == true) {
-    const addBook = prompt("Do you want to add a book? ");
-    if (addBook == "yes") {
-      userBook = new Book(
-        prompt("Title: "),
-        prompt("Author: "),
-        prompt("Pages: "),
-        prompt("Read Status: ")
-      );
-      myLibrary.push(userBook);
-      userBook.display();
-
-      continue;
-    } else if (addBook == "no") {
-      wantsToAddBook = false;
-    }
-  }
-}
-*/
-
-addDefaultBooks();
-//addBookToLibrary();
+let removeButton = document.querySelectorAll(".remove-card");
+removeButton.forEach((element) => {
+  element.addEventListener("click", function (e) {
+    element.parentElement.style.display = "none";
+  });
+});
