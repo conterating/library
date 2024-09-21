@@ -31,16 +31,30 @@ Book.prototype.display = function () {
   const readStatus = document.createElement("p");
   readStatus.textContent = `Read Status: ${this.readStatus}`;
 
+  //button parent component
+  const buttonParent = document.createElement("div");
+
   //remove button component
   let removeButton = document.createElement("button");
   removeButton.textContent = "Remove Button";
   removeButton.className = "remove-card";
 
+  //change read status component
+  let changeReadStatus = document.createElement("button");
+  changeReadStatus.textContent = "Change Read Status";
+  changeReadStatus.className = "change-read";
+
+  //append buttons to buttonParent
+  buttonParent.append(removeButton, changeReadStatus);
+  buttonParent.style.display = "flex";
+  buttonParent.style.justifyContent = "space-between";
+  buttonParent.style.alignItems = "center";
+
   //set unique data attribute
   card.setAttribute("data-id", `${this.title}`);
 
   //append created elements to card
-  card.append(title, author, pages, readStatus, removeButton);
+  card.append(title, author, pages, readStatus, buttonParent);
 
   card.classList.add("display-card");
   //append card to bookContainer
@@ -122,7 +136,8 @@ function closeDialog(event) {
   let removeButton = document.querySelectorAll(".remove-card");
   removeButton.forEach((element) => {
     element.addEventListener("click", function (e) {
-      element.parentElement.style.display = "none";
+      const firstParent = element.parentElement;
+      firstParent.parentElement.style.display = "none";
     });
   });
 
@@ -136,6 +151,7 @@ closeButton.addEventListener("click", closeDialog);
 let removeButton = document.querySelectorAll(".remove-card");
 removeButton.forEach((element) => {
   element.addEventListener("click", function (e) {
-    element.parentElement.style.display = "none";
+    const firstParent = element.parentElement;
+    firstParent.parentElement.style.display = "none";
   });
 });
